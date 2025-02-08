@@ -1,0 +1,28 @@
+/*body {*/
+/*    background-color: #323232;*/
+/*    font-family: Arial, sans-serif;*/
+/*    text-align: center;*/
+/*    padding: 5px;*/
+/*    font-size: 13px;*/
+/*    color: whitesmoke !important;*/
+/*}*/
+body{
+    font-family: "ui-sans-serif", sans-serif;
+}
+table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
+    padding: 4px 5px;
+}
+.ip-item, .env-item{
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 0 3px;
+    border-radius: 3px;
+    background-color: lightslategray;
+}
+.ip-item[data-active="true"], .env-item[data-env="prod"]{
+    background-color: green;
+}
+.dt-input {
+    width: 200px;
+}
+
