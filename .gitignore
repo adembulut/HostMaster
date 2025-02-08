@@ -16,7 +16,7 @@
 *.vcxproj.user
 *.xcodeproj
 /.idea/
-/static/
+/dist/
 node_modules/
 SHASUMS256.txt
 **/package-lock.json
