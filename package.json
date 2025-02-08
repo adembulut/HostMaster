@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap": "^4.6.2",
     "bootstrap-show-modal": "^6.0.10",
-    "datatables.net-dt": "^2.2.1"
+    "datatables.net-dt": "^2.2.1",
+    "jquery": "^3.7.1"
   }
 }

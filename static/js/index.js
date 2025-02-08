@@ -1,6 +1,3 @@
-$ = window.jQuery;
-let electronAPI = null;
-
 let prodPrefixes = [
     "9.1.1.",
     "10.90.183.",
@@ -79,7 +76,7 @@ function readHosts(callback) {
             callback(readLines(lines));
         })
         .catch(error => {
-            alert('File not read!:'+error);
+            alert('File not read!:' + error);
         });
 }
 
@@ -225,6 +222,18 @@ function generateJson() {
     return Object.values(groupedData);
 }
 
+/**
+ * Generates an HTML table using the provided data and processes IP addresses.
+ *
+ * @param {Array<{dns: string, ipList: Array<{active: string, env: string}>}>} data - The data to be added to the table. Each item contains DNS name and a list of IP addresses.
+ * {Object} item - Each element in the `data` array. Each item has the following fields:
+ *  - {string} dns - The DNS name.
+ *  - {Array<{active: string, env: string}>} ipList - A list of IP addresses. Each item in the list has the following fields:
+ *    - {string} active - Indicates whether the IP address is active (e.g., `"true"` or `"false"`).
+ *    - {string} env - The environment type of the IP address (e.g., `'broadcast'`).
+ *
+ * @returns {void} This function does not return any value, it only updates the table.
+ */
 function initTable(data) {
     $(data).each(function (i, item) {
         let tr = $('<tr>');
@@ -257,9 +266,12 @@ function initTable(data) {
     })
 
     $('#dnsList').dataTable({
-        pageLength: 1000,
-        "lengthMenu": [[10, 25, 50, 100, 1000], [10, 25, 50, 100, "1000"]]
+        paging:false,
+        pageLength:10000,
+        searching:true
     });
+
+    $('#dt-search-0').focus();
 }
 
 function generateEnvIpAddress(ipModel, idx) {
