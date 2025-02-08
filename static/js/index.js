@@ -142,7 +142,7 @@ function parseIp(ip, line, dns) {
     });
 
     if (obj.env === null) {
-        obj.env === "unknown";
+        obj.env = "unknown";
     }
     return obj;
 }
