@@ -1,3 +1,12 @@
+import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
+import DataTable from 'datatables.net-dt';
+import 'datatables.net-responsive-dt';
+
+
+
 let prodPrefixes = [
     "9.1.1.",
     "10.90.183.",
@@ -199,7 +208,9 @@ function compareItem(a, b) {
 
 function showData(content) {
     $('#output').text(content);
-    $('#outputModal').modal("show");
+    // $('#outputModal').modal('show');
+    let myModal = new bootstrap.Modal(document.getElementById('outputModal'));
+    myModal.show();
 }
 
 function generateJson() {
@@ -268,6 +279,7 @@ function initTable(data) {
     $('#dnsList').dataTable({
         paging:false,
         pageLength:10000,
+        responsive:true,
         searching:true
     });
 
