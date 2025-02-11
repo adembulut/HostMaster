@@ -78,7 +78,7 @@ $(document).ready(function () {
         showData(JSON.stringify(data));
     });
     $('#reload').on('click',()=>{
-        if(confirm("Do you confirm reload page! fadem")){
+        if(confirm("Do you confirm reload page?")){
             location.reload();
         }
     })
