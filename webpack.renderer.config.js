@@ -33,10 +33,7 @@ module.exports = {
             },
         ],
     },
-    resolve: {
-        alias: {
-        },
-    },
+    devtool: 'source-map',
     plugins: [
         new CopyWebpackPlugin({
             patterns: [

@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && electron .",
-    "build": "webpack --config webpack.main.config.js && webpack --config webpack.renderer.config.js"
+    "dev": "npm run watch & electron .",
+    "build": "webpack --config webpack.main.config.js && webpack --config webpack.renderer.config.js",
+    "watch": "webpack --config webpack.main.config.js --watch && webpack --config webpack.renderer.config.js --watch"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,7 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-show-modal": "^6.0.10",
     "datatables.net": "^2.2.2",
