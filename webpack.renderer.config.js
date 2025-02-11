@@ -33,11 +33,19 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        alias: {
+            "@src":path.resolve(__dirname,'src'),
+            "@static":path.resolve(__dirname,'src/static'),
+            "@pages":path.resolve(__dirname,'pages'),
+            "@root":path.resolve(__dirname,''),
+        }
+    },
     devtool: 'source-map',
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: "index.html", to: "index.html" },
+                { from: "pages/index.html", to: "pages/index.html" },
                 { from: "static", to: "static" },
             ],
         }),

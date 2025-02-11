@@ -5,11 +5,12 @@ const os = require('os');
 
 let mainWindow;
 let aboutWindow;
+let __rootPath=path.join(__dirname,'../../')
 
 app.whenReady().then(() => {
     createMainWindow();
 
-    app.dock.setIcon(path.join(__dirname, 'static/img/icon.png'));
+    app.dock.setIcon(path.join(__rootPath, 'static/img/icon.png'));
 
     const menuTemplate = [
         {
@@ -67,11 +68,11 @@ function createMainWindow(){
             nodeIntegration: false,
             contextIsolation: true,
             allowRunningInsecureContent: false,
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__rootPath, 'preload.js')
         }
     });
 
-    mainWindow.loadFile('index.html').then(r => {
+    mainWindow.loadFile(path.join(__rootPath,'pages/index.html')).then(r => {
         console.log("Page loaded!")
     });
     mainWindow.webContents.openDevTools();
@@ -92,7 +93,7 @@ function createAboutWindow() {
         }
     });
 
-    aboutWindow.loadFile(path.join(__dirname, 'pages/about.html'));
+    aboutWindow.loadFile(path.join(__rootPath, 'pages/about.html'));
     aboutWindow.once('ready-to-show', () => {
         aboutWindow.show();
     });

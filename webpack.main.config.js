@@ -5,10 +5,10 @@ module.exports = {
     mode: "development",
     target: "electron-main",
     entry: {
-        main: "./main.js" 
+        main: "./src/main/main.js"
     },
     output: {
-        path: path.resolve(__dirname, "dist"), 
+        path: path.resolve(__dirname, "dist"),
         filename: "[name].bundle.js" 
     },
     node: {
@@ -17,7 +17,7 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: "index.html", to: "index.html" }, 
+                { from: "pages/index.html", to: "pages/index.html" },
                 { from: "static", to: "static" }, 
             ]
         })
