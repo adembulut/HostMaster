@@ -14,11 +14,19 @@ module.exports = {
     node: {
         __dirname: false, 
     },
+    resolve: {
+        alias: {
+            "@src":path.resolve(__dirname,'src'),
+            "@static":path.resolve(__dirname,'src/static'),
+            "@pages":path.resolve(__dirname,'pages'),
+            "@root":path.resolve(__dirname,''),
+        }
+    },
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
                 { from: "pages/index.html", to: "pages/index.html" },
-                { from: "static", to: "static" }, 
+                { from: "src/static", to: "src/static" },
             ]
         })
     ]

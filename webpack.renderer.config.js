@@ -6,7 +6,7 @@ module.exports = {
     mode: "development",
     target: "electron-renderer",
     entry: {
-        renderer: "./static/js/index.js",
+        renderer: "@static/js/index.js",
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -46,7 +46,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 { from: "pages/index.html", to: "pages/index.html" },
-                { from: "static", to: "static" },
+                { from: "src/static", to: "src/static" },
             ],
         }),
         new MiniCssExtractPlugin({

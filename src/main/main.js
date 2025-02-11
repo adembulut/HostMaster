@@ -6,6 +6,7 @@ const { setAppMenu } = require('./services/menuService');
 const { setupIpcMain } = require('./services/fileService');
 
 let __rootPath = path.join(__dirname, '../../');
+let __staticPath = path.join(__dirname, '../../src/static');
 
 app.whenReady().then(() => {
     createMainWindow(__rootPath);
@@ -25,3 +26,4 @@ app.on('window-all-closed', () => {
         app.quit();
     }
 });
+app.dock.setIcon(path.join(__staticPath, 'img/icon.png'));
