@@ -4,6 +4,8 @@ import 'bootstrap';
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 import DataTable from 'datatables.net-dt';
 import 'datatables.net-responsive-dt';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 
@@ -74,6 +76,11 @@ $(document).ready(function () {
     $('#showJson').on("click", () => {
         let data = generateJson();
         showData(JSON.stringify(data));
+    });
+    $('#reload').on('click',()=>{
+        if(confirm("Do you confirm reload page! fadem")){
+            location.reload();
+        }
     })
 });
 
@@ -282,8 +289,8 @@ function initTable(data) {
         responsive:true,
         searching:true
     });
-
     $('#dt-search-0').focus();
+
 }
 
 function generateEnvIpAddress(ipModel, idx) {
