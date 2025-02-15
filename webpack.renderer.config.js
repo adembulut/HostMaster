@@ -27,7 +27,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader, 
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                 ],
             },
@@ -35,10 +35,10 @@ module.exports = {
     },
     resolve: {
         alias: {
-            "@src":path.resolve(__dirname,'src'),
-            "@static":path.resolve(__dirname,'src/static'),
-            "@pages":path.resolve(__dirname,'pages'),
-            "@root":path.resolve(__dirname,''),
+            "@src": path.resolve(__dirname, 'src'),
+            "@static": path.resolve(__dirname, 'src/static'),
+            "@pages": path.resolve(__dirname, 'pages'),
+            "@root": path.resolve(__dirname, ''),
         }
     },
     devtool: 'source-map',
@@ -50,7 +50,7 @@ module.exports = {
             ],
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css", 
+            filename: "[name].css",
         })
     ],
 };
