@@ -23,11 +23,6 @@ module.exports = {
         }
     },
     plugins: [
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: "pages/index.html", to: "pages/index.html" },
-                { from: "src/static", to: "src/static" },
-            ]
-        })
+
     ]
 };

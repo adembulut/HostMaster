@@ -6,7 +6,7 @@ module.exports = {
     mode: "development",
     target: "electron-renderer",
     entry: {
-        renderer: "@static/js/index.js",
+        renderer: "@src/renderer/js/index.js",
     },
     output: {
         path: path.resolve(__dirname, "dist"),
