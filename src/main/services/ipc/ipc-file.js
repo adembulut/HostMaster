@@ -1,18 +1,18 @@
-const { ipcMain } = require('electron');
-const fs = require('fs');
-const path = require('path');
 const os = require('os');
+const {ipcMain} = require("electron");
+const path = require("path");
+const fs = require("fs");
 
-function setupIpcMain() {
+const setupIpc = () => {
     ipcMain.handle('read-file', async (event, filePath) => {
         try {
             const fileRealPath = path.join(filePath);
             if (!fs.existsSync(fileRealPath)) {
-                return { error: 'File not found!' };
+                return {error: 'File not found!'};
             }
             return fs.readFileSync(fileRealPath, 'utf-8');
         } catch (error) {
-            return { error: error.message };
+            return {error: error.message};
         }
     });
 
@@ -21,7 +21,7 @@ function setupIpcMain() {
             const fileRealPath = path.join(filePath);
             const backupDir = path.join(os.homedir(), ".dnsedit");
             if (!fs.existsSync(backupDir)) {
-                fs.mkdirSync(backupDir, { recursive: true });
+                fs.mkdirSync(backupDir, {recursive: true});
             }
 
             if (fs.existsSync(fileRealPath)) {
@@ -33,11 +33,13 @@ function setupIpcMain() {
             }
 
             fs.writeFileSync(fileRealPath, data, 'utf-8');
-            return { success: true, message: "The file was successfully written and backed up if existed." };
+            return {success: true, message: "The file was successfully written and backed up if existed."};
         } catch (error) {
-            return { success: false, error: error.message };
+            return {success: false, error: error.message};
         }
     });
 }
 
-module.exports = { setupIpcMain };
+module.exports = {
+    setupIpcMain:setupIpc
+};

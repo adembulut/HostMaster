@@ -1,9 +1,9 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const {app, BrowserWindow, Menu} = require('electron');
 const path = require('path');
-const { createMainWindow } = require('./services/windowService');
-const { createAboutWindow } = require('./services/windowService');
-const { setAppMenu } = require('./services/menuService');
-const { setupIpcMain } = require('./services/fileService');
+const {createMainWindow} = require('./services/windowService');
+const {createAboutWindow} = require('./services/windowService');
+const {setAppMenu} = require('./services/menuService');
+const ipcService = require('./services/ipcService');
 
 let __rootPath = path.join(__dirname, '../../');
 let __staticPath = path.join(__dirname, '../../src/static');
@@ -19,7 +19,7 @@ app.whenReady().then(() => {
     });
 });
 
-setupIpcMain();
+ipcService.setupIpcMain();
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

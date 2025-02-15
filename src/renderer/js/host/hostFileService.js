@@ -1,7 +1,8 @@
 const ipService = require('@src/renderer/js/ip/ipService')
 const fileService = require('@src/renderer/js/file/file')
+const config = require('@src/config')
 
-const hostFilePath = "/etc/hosts";
+const hostFilePath = config.hostFile;
 
 function readHosts(callback) {
     fileService.readFile(hostFilePath, (lines) => {
