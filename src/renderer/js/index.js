@@ -82,7 +82,7 @@ function generateJson() {
  * {Object} item - Each element in the `data` array. Each item has the following fields:
  *  - {string} dns - The DNS name.
  *  - {Array<{active: string, env: string}>} ipList - A list of IP addresses. Each item in the list has the following fields:
- *    - {string} active - Indicates whether the IP address is active (e.g., `"true"` or `"false"`).
+ *    - {bool} active - Indicates whether the IP address is active (e.g., `true` or `false`).
  *    - {string} env - The environment type of the IP address (e.g., `'broadcast'`).
  *
  * @returns {void} This function does not return any value, it only updates the table.
@@ -95,7 +95,7 @@ function initTable(data) {
         let envs = [];
         let protectedDomain = false;
         $(item.ipList).each(function (j, ipItem) {
-            if (ipItem.active === "true") {
+            if (ipItem.active) {
                 selectedAddress = ipItem;
             }
             envs.push(generateEnvIpAddress(ipItem, i));
@@ -175,13 +175,13 @@ function changeValue(ipModel, idx) {
     if (all.length > 1) {
         all.each(function (i, x) {
             let ipModel = fetchIpModelFromDiv(x);
-            ipModel.active = "false";
+            ipModel.active = false;
             setIpModelToDiv(ipModel, x);
         });
-        selectedModel.active = "true";
+        selectedModel.active = true;
         setIpModelToDiv(selectedModel, selected[0]);
     } else {
-        selectedModel.active = selectedModel.active === "true" ? "false" : "true";
+        selectedModel.active = !selectedModel.active;
         setIpModelToDiv(selectedModel, selected[0]);
     }
 }
@@ -201,7 +201,7 @@ function setIpModelToDiv(ipModel, element) {
     element.dataset.active = ipModel.active;
     element.dataset.env = ipModel.env;
 
-    if (ipModel.active === "true") {
+    if (ipModel.active) {
         let elementLabel = $('span.env-item[data-dns="' + ipModel.dns + '"]')[0];
         elementLabel.dataset.env = ipModel.env;
         elementLabel.innerText = ipModel.env;

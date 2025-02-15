@@ -2,36 +2,37 @@ const ipConfig = require('@src/renderer/js/ip/ipConfig');
 
 const parseIp = (ip, line, dns) => {
     let commented = line.trim().startsWith("#");
-    let obj = {
+    return {
         "ip": ip,
-        env: null,
-        active: !commented ? "true" : "false",
+        env: getIpEnvironment(ip),
+        active: !commented,
         dns: dns
-    }
-    if ("127.0.0.1" === ip) {
-        obj.env = "local";
-        return obj;
-    } else if ("255.255.255.255" === ip || "::1" === ip) {
-        obj.env = "broadcast";
-        return obj;
-    }
-    ipConfig.prodPrefixes.forEach(x => {
-        if (ip.startsWith(x)) {
-            obj.env = "prod"
-        }
-    })
-    ipConfig.devPrefixes.forEach(x => {
-        if (ip.startsWith(x)) {
-            obj.env = "dev";
-        }
-    });
+    };
+}
 
-    if (obj.env === null) {
-        obj.env = "unknown";
+function getIpEnvironment(ip) {
+    if ("127.0.0.1" === ip) {
+        return "local";
+    } else if ("255.255.255.255" === ip || "::1" === ip) {
+        return "broadcast";
     }
-    return obj;
+    return getConfigBasedEnvironments(ip);
+}
+
+function getConfigBasedEnvironments(ip) {
+    for (let x of ipConfig.prodPrefixes) {
+        if (ip.startsWith(x)) {
+            return "prod";
+        }
+    }
+    for (let x of ipConfig.devPrefixes) {
+        if (ip.startsWith(x)) {
+            return "dev";
+        }
+    }
+    return "unknown";
 }
 
 module.exports = {
-    parseIp
+    parseIp:parseIp
 }
