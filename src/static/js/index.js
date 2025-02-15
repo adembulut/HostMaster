@@ -1,9 +1,9 @@
 const $ = require('jquery');
-require('bootstrap/dist/css/bootstrap.min.css');
 const bootstrap = require('bootstrap');
-require('datatables.net-responsive-dt');
-require('@fortawesome/fontawesome-free/css/all.min.css');
 const hostFileService = require('./host/hostFileService');
+require('bootstrap/dist/css/bootstrap.min.css');
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('datatables.net-responsive-dt');
 
 $(document).ready(function () {
     hostFileService.readHosts(function (json) {
