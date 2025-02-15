@@ -1,4 +1,4 @@
-const ipConfig = require('@static/js/ip/ipConfig');
+const ipConfig = require('@src/renderer/js/ip/ipConfig');
 
 const parseIp = (ip, line, dns) => {
     let commented = line.trim().startsWith("#");

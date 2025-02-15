@@ -1,5 +1,5 @@
-const ipService = require('@static/js/ip/ipService')
-const fileService = require('@static/js/file/fileService')
+const ipService = require('@src/renderer/js/ip/ipService')
+const fileService = require('@src/renderer/js/file/file')
 
 const hostFilePath = "/etc/hosts";
 
