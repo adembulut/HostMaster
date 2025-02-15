@@ -156,13 +156,13 @@ function changeValue(ipModel, idx) {
         alert("Broadcast addresses! Not changeable!");
         return false;
     }
-    let ipCount = 0;
+    let duplicateIpCount = 0;
     all.each((i, item) => {
         if (item.dataset.ip === selectedModel.ip) {
-            ipCount++;
+            duplicateIpCount++;
         }
     });
-    if (ipCount > 1) {
+    if (duplicateIpCount > 1) {
         if (confirm("Do you confirm remove duplicate ip address?")) {
             all.each((i, item) => {
                 if (item !== selected[0] && item.dataset.ip === selectedModel.ip) {
@@ -190,7 +190,7 @@ function fetchIpModelFromDiv(element) {
     return {
         ip: element.dataset.ip,
         dns: element.dataset.dns,
-        active: element.dataset.active,
+        active: "true"===element.dataset.active,
         env: element.dataset.env
     }
 }
