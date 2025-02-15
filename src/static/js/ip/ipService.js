@@ -1,6 +1,6 @@
-const {devPrefixes, prodPrefixes} = require("./ipConfig");
+const ipConfig = require('./ipConfig');
 
-function parseIp(ip, line, dns) {
+const parseIp = (ip, line, dns) => {
     let commented = line.trim().startsWith("#");
     let obj = {
         "ip": ip,
@@ -16,12 +16,12 @@ function parseIp(ip, line, dns) {
         obj.env = "broadcast";
         return obj;
     }
-    prodPrefixes.forEach(x => {
+    ipConfig.prodPrefixes.forEach(x => {
         if (ip.startsWith(x)) {
             obj.env = "prod"
         }
     })
-    devPrefixes.forEach(x => {
+    ipConfig.devPrefixes.forEach(x => {
         if (ip.startsWith(x)) {
             obj.env = "dev";
         }
@@ -34,5 +34,5 @@ function parseIp(ip, line, dns) {
 }
 
 module.exports = {
-    parseIp: parseIp
+    parseIp
 }

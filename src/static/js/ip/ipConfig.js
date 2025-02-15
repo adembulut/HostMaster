@@ -1,4 +1,4 @@
-let prodPrefixes = [
+const prodPrefixes = [
     "9.1.1.",
     "10.90.183.",
     "10.90.192.",
@@ -15,7 +15,7 @@ let prodPrefixes = [
     "10.90.255."
 ];
 
-let devPrefixes = [
+const devPrefixes = [
     "10.1.10.",
     "10.90.128.",
     "10.90.129.",
@@ -31,5 +31,6 @@ let devPrefixes = [
 
 
 module.exports = {
-    devPrefixes, prodPrefixes
+    devPrefixes:devPrefixes,
+    prodPrefixes:prodPrefixes
 }

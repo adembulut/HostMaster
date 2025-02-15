@@ -1,18 +1,17 @@
-const {parseIp} = require("../ip/ipService");
+const ipService = require('../ip/ipService')
+const fileService = require('../file/fileService')
 
-const api = window.electronAPI;
+const hostFilePath = "/etc/hosts";
 
 function readHosts(callback) {
-    api.readFile("/etc/hosts")
-        .then(data => {
-            let lines = data.split("\n");
-            callback(readLines(lines));
-        })
-        .catch(error => {
-            throw new Error("File not read. Err:" + error);
-        });
+    fileService.readFile(hostFilePath, (lines) => {
+        callback(readLines(lines))
+    });
 }
 
+async function writeFile(data) {
+    return await fileService.writeFile(hostFilePath, data);
+}
 
 function readLines(lines) {
     let map = new Map();
@@ -33,7 +32,7 @@ function readLines(lines) {
         dns = x.replace(ip, "").replace("#", "").trim();
         let line = x;
 
-        let ipItem = parseIp(ip, line, dns);
+        let ipItem = ipService.parseIp(ip, line, dns);
         if (map.has(dns)) {
             map.get(dns).push(ipItem);
         } else {
@@ -100,5 +99,6 @@ function compareItem(a, b) {
 
 module.exports = {
     readHosts: readHosts,
-    getHostsLinesFromJson:getHostsLinesFromJson
+    writeFile: writeFile,
+    getHostsLinesFromJson: getHostsLinesFromJson,
 };

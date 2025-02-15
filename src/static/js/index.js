@@ -1,19 +1,18 @@
-import $ from 'jquery'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import * as bootstrap from 'bootstrap';
-import 'datatables.net-responsive-dt';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import {getHostsLinesFromJson, readHosts} from "./host/hostFileService";
-
+const $ = require('jquery');
+require('bootstrap/dist/css/bootstrap.min.css');
+const bootstrap = require('bootstrap');
+require('datatables.net-responsive-dt');
+require('@fortawesome/fontawesome-free/css/all.min.css');
+const hostFileService = require('./host/hostFileService');
 
 $(document).ready(function () {
-    readHosts(function (json) {
+    hostFileService.readHosts(function (json) {
         initTable(json);
     });
 
     $('#showHosts').on("click", function () {
         let data = generateJson();
-        let lines = getHostsLinesFromJson(data);
+        let lines = hostFileService.getHostsLinesFromJson(data);
         showData(lines.join(''));
     });
 
@@ -26,12 +25,10 @@ $(document).ready(function () {
 
 
         let data = generateJson();
-        let lines = getHostsLinesFromJson(data);
-
-        const filePath = "/etc/hosts";
+        let lines = hostFileService.getHostsLinesFromJson(data);
         const newData = lines.join("");
 
-        const result = await window.electronAPI.writeFile(filePath, newData);
+        const result = await hostFileService.writeFile(newData);
         if (result.success === true) {
             alert(result.message);
         } else {
