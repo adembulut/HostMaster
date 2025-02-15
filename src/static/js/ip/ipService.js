@@ -1,4 +1,4 @@
-const ipConfig = require('./ipConfig');
+const ipConfig = require('@static/js/ip/ipConfig');
 
 const parseIp = (ip, line, dns) => {
     let commented = line.trim().startsWith("#");
@@ -8,7 +8,6 @@ const parseIp = (ip, line, dns) => {
         active: !commented ? "true" : "false",
         dns: dns
     }
-
     if ("127.0.0.1" === ip) {
         obj.env = "local";
         return obj;

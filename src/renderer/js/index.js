@@ -1,6 +1,6 @@
 const $ = require('jquery');
 const bootstrap = require('bootstrap');
-const hostFileService = require('../../static/js/host/hostFileService');
+const hostFileService = require('@static/js/host/hostFileService');
 require('bootstrap/dist/css/bootstrap.min.css');
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('datatables.net-responsive-dt');

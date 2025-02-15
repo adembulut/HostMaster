@@ -18,7 +18,7 @@ module.exports = {
             "@src": path.resolve(__dirname, 'src'),
             "@static": path.resolve(__dirname, 'src/static'),
             "@pages": path.resolve(__dirname, 'pages'),
-            "@root": path.resolve(__dirname, ''),
+            "@root": path.resolve(__dirname, '')
         }
     },
     plugins: [
