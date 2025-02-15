@@ -11,7 +11,7 @@ function createMainWindow(rootPath) {
         maximizable: false,
         fullscreen: false,
         fullscreenable: false,
-        title: 'Adem DnsEdit',
+        title: 'HostMaster',
         webPreferences: {
             zoomFactor: 1,
             nodeIntegration: false,

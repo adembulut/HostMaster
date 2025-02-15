@@ -1,5 +1,5 @@
 {
-  "name": "dnsedit",
+  "name": "hostmaster",
   "version": "1.0.0",
   "main": "src/main/main.js",
   "scripts": {

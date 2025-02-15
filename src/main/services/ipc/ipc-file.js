@@ -19,7 +19,7 @@ const setupIpc = () => {
     ipcMain.handle('write-file', async (event, filePath, data) => {
         try {
             const fileRealPath = path.join(filePath);
-            const backupDir = path.join(os.homedir(), ".dnsedit");
+            const backupDir = path.join(os.homedir(), ".hostmaster");
             if (!fs.existsSync(backupDir)) {
                 fs.mkdirSync(backupDir, {recursive: true});
             }
