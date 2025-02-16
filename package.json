@@ -36,6 +36,7 @@
     "datatables.net-dt": "^2.2.2",
     "datatables.net-responsive-dt": "^3.0.3",
     "expose-loader": "^5.0.1",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "sweetalert2": "^11.16.1"
   }
 }

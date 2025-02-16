@@ -1,5 +1,7 @@
 body{
     font-family: "ui-sans-serif", sans-serif;
+    background-color: #282828;
+    color: white;
 }
 table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td {
     padding: 4px 5px;

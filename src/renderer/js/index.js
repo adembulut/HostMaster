@@ -3,7 +3,10 @@ const bootstrap = require('bootstrap');
 const hostFileService = require('@src/renderer/js/host/hostFileService');
 require('bootstrap/dist/css/bootstrap.min.css');
 require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@static/css/index.css');
 require('datatables.net-responsive-dt');
+const dialog = require('@src/renderer/utils/dialog')
+
 
 $(document).ready(function () {
     hostFileService.readHosts(function (json) {
@@ -41,9 +44,9 @@ $(document).ready(function () {
         showData(JSON.stringify(data));
     });
     $('#reload').on('click', () => {
-        if (confirm("Do you confirm reload page?")) {
+        dialog.confirm("Do you confirm reload page?", () => {
             location.reload();
-        }
+        });
     })
 });
 
@@ -190,7 +193,7 @@ function fetchIpModelFromDiv(element) {
     return {
         ip: element.dataset.ip,
         dns: element.dataset.dns,
-        active: "true"===element.dataset.active,
+        active: "true" === element.dataset.active,
         env: element.dataset.env
     }
 }
